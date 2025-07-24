@@ -45,28 +45,30 @@ export default function InfoCard({
   return (
     <div
       className={cn(
-        "relative rounded-3xl overflow-hidden p-6 md:p-10 h-[280px] transition-all duration-1000 ease-in-out",
-        "bg-neutral-900 text-white border border-white",
-        "flex items-center justify-center text-center",
+        "flex flex-col rounded-3xl overflow-hidden h-[75px] min-h-[220px] transition-all duration-1000 ease-in-out w-full bg-neutral-900 text-white border border-white",
         wrapperClassName
       )}
     >
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={currentTestimonial.quote + currentTestimonial.author}
-          initial={{ opacity: 0, filter: "blur(4px)" }}
-          animate={{ opacity: 1, filter: "blur(0px)" }}
-          exit={{ opacity: 0, filter: "blur(4px)" }}
-          transition={{ duration: 0.5 }}
-          className={cn("relative z-10 max-w-xl", textClassName)}
-        >
-          <p className="text-xl italic mb-2">"{currentTestimonial.quote}"</p>
-          {currentTestimonial.author && (
-            <p className="text-sm font-light">– {currentTestimonial.author}</p>
-          )}
-          {children}
-        </motion.div>
-      </AnimatePresence>
+      <div className="flex-1 flex items-center justify-center text-center w-full p-6 md:p-10 pt-8">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentTestimonial.quote + currentTestimonial.author}
+            initial={{ opacity: 0, filter: "blur(4px)" }}
+            animate={{ opacity: 1, filter: "blur(0px)" }}
+            exit={{ opacity: 0, filter: "blur(4px)" }}
+            transition={{ duration: 0.5 }}
+            className={cn("relative z-10 max-w-xl w-full", textClassName)}
+          >
+            <p className="text-xl italic mb-2">"{currentTestimonial.quote}"</p>
+            {currentTestimonial.author && (
+              <p className="text-sm font-light">
+                – {currentTestimonial.author}
+              </p>
+            )}
+          </motion.div>
+        </AnimatePresence>
+      </div>
+      {children && <div className="w-full z-20">{children}</div>}
     </div>
   );
 }

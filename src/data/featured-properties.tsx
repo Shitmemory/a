@@ -22,6 +22,4 @@ export const featuredProperties: Property[] = [
     image: "/images/house3.png",
     status: "new",
   },
-
-  // ...more properties
 ];

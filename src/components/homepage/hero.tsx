@@ -8,7 +8,7 @@ import { useAutoResumeVideo } from "@/hooks/useAutoResumeVideo";
 interface HeroProps {
   scrollTargetRef: React.RefObject<HTMLDivElement | null>;
   videoRef: React.RefObject<HTMLVideoElement | null>;
-  ready: any;
+  ready: boolean;
 }
 
 const HeroSection = ({ scrollTargetRef, videoRef, ready }: HeroProps) => {

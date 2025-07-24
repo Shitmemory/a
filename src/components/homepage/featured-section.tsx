@@ -6,7 +6,7 @@ const FeaturedSection = forwardRef<HTMLElement>((_, ref) => {
   return (
     <section
       ref={ref}
-      className="snap-start text-white  px-4 h-[95vh] relative "
+      className="snap-start text-white h-[90vh] px-4  relative "
     >
       {/* Gradient Background */}
       <div

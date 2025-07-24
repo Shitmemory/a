@@ -116,20 +116,18 @@ export default function HeroWrapper() {
       setLoading(false);
     };
 
-    const onCanPlay = () => endLoading();
-
     if (video) {
-      video.addEventListener("canplaythrough", onCanPlay);
+      video.addEventListener("canplaythrough", endLoading);
     }
 
     const fallbackTimeout = setTimeout(() => {
       endLoading();
-    }, 4000);
+    }, 2000);
 
     return () => {
       clearTimeout(fallbackTimeout);
       if (video) {
-        video.removeEventListener("canplaythrough", onCanPlay);
+        video.removeEventListener("canplaythrough", endLoading);
       }
       window.removeEventListener("resize", setVH);
     };
