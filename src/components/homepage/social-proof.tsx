@@ -21,11 +21,12 @@ const SocialProof = forwardRef<HTMLDivElement, SocialProofProps>(
     return (
       <section
         ref={ref}
-        className="min-h-screen snap-start bg-neutral-900 text-white px-6 relative z-10"
+        className="min-h-screen snap-start bg-neutral-900 text-white px-6 relative "
       >
         {/* Process Section */}
         <ProcessSection scrollTargetRef={scrollTargetRef} />
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 max-w-6xl mx-auto border-t border-gray-700 z-50" />
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 max-w-6xl mx-auto border-t border-gray-700" />
 
         <ServicesCarousel />
         {/* Stat Section */}
@@ -40,7 +41,7 @@ const SocialProof = forwardRef<HTMLDivElement, SocialProofProps>(
 
         {/* Subtle Bottom Gradient */}
         <div
-          className="absolute bottom-0 left-0 w-full h-[10%] pointer-events-none z-5"
+          className="absolute bottom-0 left-0 w-full h-[10%] pointer-events-none"
           style={{
             background:
               "linear-gradient(to bottom, rgba(23, 23, 23, 1) 0%,rgb(37, 43, 51) 100%)",

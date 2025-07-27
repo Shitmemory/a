@@ -28,8 +28,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* ✅ This actually injects preload styles into the document head */}
-        <link rel="preload" href="/_next/static/css/app.css" as="style" />
-        <link rel="stylesheet" href="/_next/static/css/app.css" />
+
         {/* You can also preload fonts here */}
       </head>
       <body
@@ -37,15 +36,12 @@ export default function RootLayout({
       >
         <ClientWrapper>
           <Navbar />
-          <div className="transition-all duration-700 ease-in-out overflow-hidden">
-            {children}
-          </div>
+          <div className=" overflow-hidden">{children}</div>
         </ClientWrapper>
       </body>
     </html>
   );
 }
-
 // import type { Metadata } from "next";
 // import { Geist, Geist_Mono } from "next/font/google";
 // import "./globals.css";

@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import {
   Scale,
   Camera,
@@ -16,63 +13,6 @@ import { DarkCard } from "../card";
 import { FiStar } from "react-icons/fi";
 import InfoCard from "../info-card";
 import { useState } from "react";
-
-const CardGrid = ({}) => {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
-  const handleMouseEnter = (index: number) => setHoveredIndex(index);
-  const handleMouseLeave = () => setHoveredIndex(null);
-
-  const cards = [
-    {
-      title: "4K+",
-      description: "Happy clients",
-      className: "bg-neutral-900",
-      theme: "dark",
-    },
-    {
-      title: "25+",
-      description: "Years Experience",
-      className: "bg-white",
-    },
-    {
-      title: "97%",
-      description: "Satisfaction rate",
-      className: "bg-neutral-800",
-      theme: "dark",
-    },
-    {
-      title: "1:1",
-      description: "Personal Support",
-      className: "bg-neutral-900",
-      theme: "dark",
-    },
-  ];
-
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-y-5 gap-x-5 font-bold w-full">
-      {cards.map((card, index) => {
-        const isBlurred = hoveredIndex !== null && hoveredIndex !== index;
-
-        return (
-          <DarkCard
-            key={index}
-            title={card.title}
-            description={card.description}
-            theme={card.theme}
-            className={`
-              max-w-full flex-1 h-[220px] transition-all duration-300
-              ${card.className}
-              ${isBlurred ? "blur-sm scale-[0.95]" : ""}
-            `}
-            onMouseEnter={() => handleMouseEnter(index)}
-            onMouseLeave={handleMouseLeave}
-          />
-        );
-      })}
-    </div>
-  );
-};
 
 const steps = [
   {
@@ -113,39 +53,13 @@ export default function ProcessSection({
 }: {
   scrollTargetRef: React.RefObject<HTMLElement | null>;
 }) {
-  const [hovered, setHovered] = useState<number | null>(null);
-  const cards = [
-    {
-      title: "4K+",
-      description: "Happy clients",
-      theme: "dark",
-      className: "max-w-full bg-neutral-900 flex-1",
-    },
-    {
-      title: "25+",
-      description: "Years Experience",
-      className: "max-w-full bg-white flex-1",
-    },
-    {
-      title: "97%",
-      description: "Satisfaction rate",
-      theme: "dark",
-      className: "max-w-full bg-neutral-800 flex-1",
-    },
-    {
-      title: "1:1",
-      description: "Personal Support",
-      theme: "dark",
-      className: "max-w-full bg-neutral-900 flex-1",
-    },
-  ];
   return (
     <section className="py-16 px-4 sm:px-6 md:px-10 lg:px-20 text-white w-full">
       <div className="mb-12 max-w-6xl mx-auto">
         {/* <h2 className="text-4xl md:text-5xl tracking-tight mb-4 mt-16">
           Our Proven Process
         </h2>  */}
-        <p className="mt-10 text-gray-200 text-lg md:text-2xl lg:text-3xl font-bold text-center">
+        <p className="-mb-6 mt-8 text-gray-200 text-lg md:text-2xl lg:text-3xl font-bold text-center">
           Sell Your Home With Confidence.
         </p>
       </div>

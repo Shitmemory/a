@@ -16,7 +16,7 @@ export const featuredProperties: Property[] = [
     status: "new",
   },
   {
-    title: "Sunray, Dungeness, Kent",
+    title: "Sunray t",
     location: "Dungeness, Kent",
     price: "£850,000 Freehold",
     image: "/images/house3.png",

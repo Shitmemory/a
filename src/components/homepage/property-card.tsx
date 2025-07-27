@@ -1,3 +1,6 @@
+import Image from "next/image";
+import { memo } from "react";
+
 export type Property = {
   title: string;
   location: string;
@@ -6,7 +9,7 @@ export type Property = {
   status?: "new" | "under-offer" | "sold" | null;
 };
 
-export default function PropertyCard({ property }: { property: Property }) {
+function PropertyCard({ property }: { property: Property }) {
   const getStatusLabel = () => {
     switch (property.status) {
       case "new":
@@ -35,20 +38,24 @@ export default function PropertyCard({ property }: { property: Property }) {
 
   return (
     <div className="group relative overflow-hidden bg-white select-none cursor-pointer">
-      {/* Image */}
-      <img
-        src={property.image}
-        alt="Property image"
-        className="w-full h-96 object-cover transition-transform duration-500 group-hover:scale-105"
-      />
+      {/* Image Wrapper with fixed height */}
+      <div className="relative w-full h-64 sm:h-80 md:h-96">
+        <Image
+          src={property.image || "./fallback"}
+          alt={property.title || "Property image"}
+          fill
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          loading="lazy"
+        />
+      </div>
 
       {/* Status Badge */}
       <div className="group-hover:opacity-0">
         {property.status && (
-          <div className="absolute top-0 left-0 w-full bg-black/30 text-white text-xs px-4 py-2 z-10 flex items-center justify-between">
-            <div className="flex items-center gap-2 ">
+          <div className="absolute top-0 left-0 w-full bg-black/30 text-white text-xs px-3 sm:px-4 py-2 z-10 flex items-center justify-between">
+            <div className="flex items-center gap-2">
               <span className={`w-2 h-2 rounded-full ${getStatusColor()}`} />
-              <span className="font-bold tracking-wide uppercase ">
+              <span className="font-bold tracking-wide uppercase text-xs">
                 {getStatusLabel()}
               </span>
             </div>
@@ -56,12 +63,20 @@ export default function PropertyCard({ property }: { property: Property }) {
         )}
 
         {/* Overlay text container with hover disappear */}
-        <div className="absolute bottom-0 left-0 w-full bg-black/30 text-white p-4 z-10 transition-opacity duration-300">
-          <h3 className="text-lg font-semibold">{property.title}</h3>
-          <p className="text-sm text-gray-200">{property.location}</p>
-          <p className="text-sm font-semibold mt-1">{property.price}</p>
+        <div className="absolute bottom-0 left-0 w-full bg-black/30 text-white p-3 sm:p-4 z-10 transition-opacity duration-300">
+          <h3 className="text-base sm:text-lg font-semibold">
+            {property.title}
+          </h3>
+          <p className="text-xs sm:text-sm text-gray-200">
+            {property.location}
+          </p>
+          <p className="text-xs sm:text-sm font-semibold mt-1">
+            {property.price}
+          </p>
         </div>
       </div>
     </div>
   );
 }
+
+export default memo(PropertyCard); // memo prevents unnecessary re-renders
