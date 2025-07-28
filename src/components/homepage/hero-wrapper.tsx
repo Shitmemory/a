@@ -61,8 +61,10 @@ export default function HeroWrapper() {
 
   return (
     <main
-      style={{ height: "calc(var(--vh, 1vh) * 100)" }}
-      className="relative scroll-smooth overflow-x-hidden"
+      style={{
+        height: "calc(var(--vh, 1vh) * 100)",
+      }}
+      className="relative overflow-x-hidden bg-neutral-900"
     >
       {/* Loading Overlay */}
       <div
@@ -84,7 +86,7 @@ export default function HeroWrapper() {
       )}
 
       {/* Main Content */}
-      <div className="transition-all duration-500 relative z-10">
+      <div className="transition-all duration-500 relative z-10 bg-neutral-900">
         <HeroSection
           ref={heroRef}
           scrollTargetRef={nextSectionRef}

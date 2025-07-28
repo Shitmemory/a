@@ -12,17 +12,22 @@ export function useFullPageScroll(
       const ref = sections[index];
       if (ref?.current) {
         isScrolling.current = true;
-        ref.current.scrollIntoView({ behavior: "smooth" });
+        ref.current.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
 
         // Lock scroll for animation duration
         setTimeout(() => {
           isScrolling.current = false;
-        }, 800); // Match animation duration
+        }, 1000); // Slightly longer to match smooth animation
       }
     };
 
     const handleScroll = (e: WheelEvent) => {
       if (isScrolling.current) return;
+      e.preventDefault();
+
       if (e.deltaY > 30) {
         if (currentSection.current < sections.length - 1) {
           currentSection.current++;
